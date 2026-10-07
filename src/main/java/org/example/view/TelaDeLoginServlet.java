@@ -27,12 +27,20 @@ public class TelaDeLoginServlet extends HttpServlet {
         String senha = request.getParameter("senha");
 
         if (Validacao.validarLogin(usuario, senha)) {
+            String perfil = Validacao.getPerfil(usuario);
+
             HttpSession session = request.getSession();
             session.setAttribute("usuario", usuario);
-            response.sendRedirect(request.getContextPath() + "/home.html");
-        } else {
-            response.sendRedirect(request.getContextPath() + "/login.html?erro=senha");
+            session.setAttribute("perfil", perfil);
+
+            if (perfil.equals("ADMIN")) {
+                response.sendRedirect(request.getContextPath() + "/admin.html");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/home.html");
+            }
+        }
+        else {
+            response.sendRedirect(request.getContextPath()+"/login.html?erro=senha");
         }
     }
-
 }
