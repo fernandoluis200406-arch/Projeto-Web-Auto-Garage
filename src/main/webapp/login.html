@@ -1,50 +1,124 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="css/style.css">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Auto Garage - Login</title>
+
+    <link rel="stylesheet"
+          href="/atividade2login-1.0-SNAPSHOT/css/style.css">
+
 </head>
 
-<body>
-<div class="container">
-    <h1>Login</h1>
-    <form action="login" method="post">
-        <div class="form-group">
-            <label for="usuario">Usuário</label>
-            <input
-                    type="text"
-                    id="usuario"
-                    name="usuario"
-                    placeholder="Digite seu usuário"
-                    required>
-        </div>
-        <div class="form-group">
-            <label for="senha">Senha</label>
-            <input
-                    type="password"
-                    id="senha"
-                    name="senha"
-                    placeholder="Digite sua senha"
-                    required>
-        </div>
-        <button type="submit">Login</button>
+<body class="login-body">
 
-    </form>
+<div class="login-container">
+
+    <div class="login-brand">
+
+        <div class="brand-logo">
+            AG
+        </div>
+
+        <h1>Auto Garage</h1>
+
+        <p>
+            Sua garagem de carros extraordinários.
+        </p>
+
+    </div>
+
+    <div class="login-card">
+
+        <span class="eyebrow">
+            ACESSO
+        </span>
+
+        <h2>Bem-vindo.</h2>
+
+        <p class="login-description">
+            Entre para conhecer nossa coleção de veículos.
+        </p>
+
+        <form action="login" method="post">
+
+            <div class="input-group">
+
+                <label for="usuario">
+                    Usuário
+                </label>
+
+                <input
+                        type="text"
+                        id="usuario"
+                        name="usuario"
+                        placeholder="Digite seu usuário"
+                        required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label for="senha">
+                    Senha
+                </label>
+
+                <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        placeholder="Digite sua senha"
+                        required>
+
+            </div>
+
+            <button class="primary-button"
+                    type="submit">
+
+                Entrar
+
+            </button>
+
+        </form>
+
+        <div id="erro" class="error-message"></div>
+
+        <div class="login-info">
+
+            <p>
+                Usuário de teste: <strong>gabi</strong>
+            </p>
+
+            <p>
+                Senha: <strong>1234</strong>
+            </p>
+
+        </div>
+
+    </div>
+
 </div>
+
 <script>
-    const params = new URLSearchParams(window.location.search);
-    if(params.get("erro")==="senha"){
-        const mensagem = document.createElement("p");
 
-        mensagem.textContent = "Usuário ou senha incorretos";
-        mensagem.style.color = "red";
-        mensagem.style.textAlign = "center";
-        mensagem.style.marginTop = "15px";
+    const params =
+        new URLSearchParams(window.location.search);
 
-        document.querySelector(".container").appendChild(mensagem);
+    if (params.get("erro") === "senha") {
+
+        document.getElementById("erro")
+            .textContent =
+            "Usuário ou senha incorretos.";
+
     }
+
 </script>
+
 </body>
+
 </html>
